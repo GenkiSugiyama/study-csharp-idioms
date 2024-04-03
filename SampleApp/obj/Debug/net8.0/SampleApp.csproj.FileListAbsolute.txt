@@ -1,0 +1,15 @@
+/workspaces/codespaces-blank/SampleApp/bin/Debug/net8.0/SampleApp
+/workspaces/codespaces-blank/SampleApp/bin/Debug/net8.0/SampleApp.deps.json
+/workspaces/codespaces-blank/SampleApp/bin/Debug/net8.0/SampleApp.runtimeconfig.json
+/workspaces/codespaces-blank/SampleApp/bin/Debug/net8.0/SampleApp.dll
+/workspaces/codespaces-blank/SampleApp/bin/Debug/net8.0/SampleApp.pdb
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.AssemblyInfoInputs.cache
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.AssemblyInfo.cs
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.csproj.CoreCompileInputs.cache
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.sourcelink.json
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.dll
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/refint/SampleApp.dll
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.pdb
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/SampleApp.genruntimeconfig.cache
+/workspaces/codespaces-blank/SampleApp/obj/Debug/net8.0/ref/SampleApp.dll
