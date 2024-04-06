@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "C#: DistanceConverter",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/Chapter2/DistanceConverter/DistanceConverter/DistanceConverter.csproj",
+            "launchConfigurationId": "TargetFramework=;DistanceConverter"
+        }
+    ]
+}
