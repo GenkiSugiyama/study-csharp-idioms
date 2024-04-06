@@ -9,15 +9,45 @@ namespace Chapter2.SalesCalclator{
     {
         static void Main(string[] args)
         {
-            SalesCounter sales = new SalesCounter(ReadSeals("sales.csv"));
-            Dictionary<string, int> salesPerStore = sales.GetPerStoreSales();
-            foreach(KeyValuePair<string, int> obj in salesPerStore)
+            var sales = new SalesCounter("sales.csv");
+            IDictionary<string, int> salesPerStore = sales.GetPerStoreSales();
+            foreach(var obj in salesPerStore)
             {
                 Console.WriteLine($"店舗名：{obj.Key} 売上：{obj.Value}");
             }
         }
+    }
 
-        static List<Sale> ReadSeals(string filePath)
+    public class SalesCounter
+    {
+        private IEnumerable<Sale> _sales;
+
+        public SalesCounter(string filePath)
+        {
+            _sales = ReadSeals(filePath);
+        }
+
+        public IDictionary<string, int> GetPerStoreSales()
+        {
+            var result = new Dictionary<string,int>();
+            foreach (var sale in _sales)
+            {
+                // 店舗名が既存のキーと一致するかを確認
+                if(result.ContainsKey(sale.ShopName))
+                {
+                    // 一致していたら既存キーの値に売上を加算
+                    result[sale.ShopName] += sale.Amount;
+                }
+                else
+                {
+                    // 一致していなければ新しいキーの最初の売上として格納
+                    result[sale.ShopName] = sale.Amount;
+                }
+            }
+            return result;
+        }
+
+        private static IEnumerable<Sale> ReadSeals(string filePath)
         {
             // 返り値用のインスタンスを生成
             List<Sale> sales = new List<Sale>();
@@ -36,36 +66,6 @@ namespace Chapter2.SalesCalclator{
                 sales.Add(sale);
             }
             return sales;
-        }
-    }
-
-    public class SalesCounter
-    {
-        private List<Sale> _sales;
-
-        public SalesCounter(List<Sale> sales)
-        {
-            _sales = sales;
-        }
-
-        public Dictionary<string, int> GetPerStoreSales()
-        {
-            Dictionary<string, int> result = new Dictionary<string,int>();
-            foreach (Sale sale in _sales)
-            {
-                // 店舗名が既存のキーと一致するかを確認
-                if(result.ContainsKey(sale.ShopName))
-                {
-                    // 一致していたら既存キーの値に売上を加算
-                    result[sale.ShopName] += sale.Amount;
-                }
-                else
-                {
-                    // 一致していなければ新しいキーの最初の売上として格納
-                    result[sale.ShopName] = sale.Amount;
-                }
-            }
-            return result;
         }
     }
 
