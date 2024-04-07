@@ -5,6 +5,7 @@
 
 # self add .mono
 .mono/*
+.vscode/*
 
 # User-specific files
 *.rsuser
