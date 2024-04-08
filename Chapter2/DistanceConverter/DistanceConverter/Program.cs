@@ -12,9 +12,13 @@ namespace Chapter2.DistanceConverter{
             {
                 PrintFeetToMeterList(1, 10);
             }
-            else
+            else if (args[0] == "-tof")
             {
                 PrintMeterToFeetList(1, 10);
+            }
+            else if (args[0] == "-toi")
+            {
+                PrintInchToMeter(1, 10);
             }
         }
 
@@ -36,6 +40,14 @@ namespace Chapter2.DistanceConverter{
             }
         }
 
+        private static void PrintInchToMeter(int start, int stop)
+        {
+            for (int inch = start; inch <= stop; inch++)
+            {
+                double meter = InchConverter.ToMeter(inch);
+                Console.WriteLine($"{inch} inch = {meter} m");
+            }
+        }
 
     }
 
@@ -51,6 +63,21 @@ namespace Chapter2.DistanceConverter{
         public static double ToMeter(int feet)
         {
             return feet * Raito;
+        }
+
+        public static double FromMeter(int meter)
+        {
+            return meter / Raito;
+        }
+    }
+
+    public static class InchConverter
+    {
+        private const double Raito = 0.0254;
+
+        public static double ToMeter(int inch)
+        {
+            return inch * Raito;
         }
 
         public static double FromMeter(int meter)
