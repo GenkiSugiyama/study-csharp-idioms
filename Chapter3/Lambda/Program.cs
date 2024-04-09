@@ -20,7 +20,27 @@ namespace Chapter3.Lambda
             // デリゲート用変数だけじゃなくIsEvenメソッドを直接渡すこともできる
             // var result = Count(numbers, IsEven);
             // Predicateを使ってCountメソッド呼び出し時にメソッドに渡したい処理を直接記述している
-            var result = Count(numbers, delegate(int n){ return n % 2 == 0; });
+
+            // ラムダ式理解のための助長なコード
+            // Countメソッドに渡す判定式をもっとも助長な書き方でjudgeに渡している
+            // Predicate<int> judge =
+            //     (int n) => {
+            //         if (n % 2 == 0)
+            //         {
+            //             return true;
+            //         }
+            //         else
+            //         {
+            //             return false;
+            //         }
+            //     };
+            // Countメソッドに渡すためだけの変数は無駄なので直接ラムダ式をCountメソッドに渡す
+            // 上記if文を１行でかける
+            // &&ラムダ式の{}内の文が1行なら{}とreturnを省略できる
+            // &&ラムダ式では引数の型を省略できる
+            // &&ラムダ式の引数が1つの場合は()を省略できる
+            // 以下が今回のラムダ式の最終系
+            var result = Count(numbers, n => n % 2 == 0);
             Console.WriteLine(result);
         }
 
@@ -42,9 +62,11 @@ namespace Chapter3.Lambda
 
         // 渡された数値が2の倍数かを判定するメソッド
         // このメソッドをJudgementデリゲートに渡す
-        public static bool IsEven(int n)
-        {
-            return n % 2 == 0;
-        }
+        // Predicateの登場によりdelegateに渡すメソッドを定義する必要がなくなった（※Predicateはboolを返す判定用のデリゲート）
+        // ※処理が複雑な場合は可読性を考えて別で定義したものをdelegateに渡したい
+        // public static bool IsEven(int n)
+        // {
+        //     return n % 2 == 0;
+        // }
     }
 }
