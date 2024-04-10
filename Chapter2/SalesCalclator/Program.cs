@@ -15,6 +15,12 @@ namespace Chapter2.SalesCalclator{
             {
                 Console.WriteLine($"店舗名：{obj.Key} 売上：{obj.Value}");
             }
+
+            IDictionary<string, int> salesPerCategory = sales.GetPerCategorySales();
+            foreach (var obj in salesPerCategory)
+            {
+                Console.WriteLine($"カテゴリ：{obj.Key} 売上：{obj.Value}");
+            }
         }
     }
 }

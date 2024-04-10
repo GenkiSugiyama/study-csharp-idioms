@@ -29,6 +29,26 @@ public class SalesCounter
         return result;
     }
 
+    public IDictionary<string, int> GetPerCategorySales()
+    {
+        var result = new Dictionary<string,int>();
+        foreach (var sale in _sales)
+        {
+            // 店舗名が既存のキーと一致するかを確認
+            if(result.ContainsKey(sale.ProductCategory))
+            {
+                // 一致していたら既存キーの値に売上を加算
+                result[sale.ProductCategory] += sale.Amount;
+            }
+            else
+            {
+                // 一致していなければ新しいキーの最初の売上として格納
+                result[sale.ProductCategory] = sale.Amount;
+            }
+        }
+        return result;
+    }
+
     private static IEnumerable<Sale> ReadSeals(string filePath)
     {
         // 返り値用のインスタンスを生成
