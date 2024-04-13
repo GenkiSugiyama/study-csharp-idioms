@@ -7,27 +7,46 @@ class Program
     static void Main(string[] args)
     {
         // 4-2-1
-        var YearMonthArr = new YearMonth[] {
-            new YearMonth(2001, 3),
+        YearMonth[] yearMonthArr = {
+            new YearMonth(2110, 3),
             new YearMonth(1993, 3),
-            new YearMonth(2024, 12),
-            new YearMonth(2005, 5),
-            new YearMonth(2012, 12)
+            new YearMonth(2224, 12),
+            new YearMonth(2105, 5),
+            new YearMonth(2112, 12)
         };
 
         // 4-2-2
-        foreach (var yearMonth in YearMonthArr)
+        foreach (var yearMonth in yearMonthArr)
         {
-            Console.WriteLine(yearMonth.ToString());
+            Console.WriteLine(yearMonth);
         }
 
-        // 4-3-3
+        // 4-2-4
+        var ym = FindYearMonth(yearMonthArr);
+        // Console.WriteLine(ym?.Year.ToString() ?? "21世紀のデータはありません");
+        var s = ym == null ? "21世紀のデータはありません" : ym.ToString();
 
+        // 4-2-5
+        var after1MonthList = new List<YearMonth>();
+        foreach(var yem in yearMonthArr)
+        {
+            var newYm = yem.AddOneMonth();
+            after1MonthList.Add(newYm);
+        }
+        after1MonthList.ForEach(ym => Console.WriteLine(ym.ToString()));
     }
 
-    static YearMonth FindYearMonth(Array yearMonthArr)
+    // 4-2-3
+    static YearMonth FindYearMonth(YearMonth[] yearMonthArr)
     {
-        
+        foreach(var ym in yearMonthArr)
+        {
+            if(ym.Is21Century)
+            {
+                return ym;
+            }
+        }
+        return null;
     }
 }
 
@@ -40,11 +59,12 @@ class YearMonth
     public bool Is21Century
     {
         get {
-            if (2001 <= Year && Year <= 2100 )
-            {
-                return true;
-            }
-            return false;
+            // if (2001 <= Year && Year <= 2100 )
+            // {
+            //     return true;
+            // }
+            // return false;
+            return 2001 <= Year && Year <= 2100;
         }
     }
 
